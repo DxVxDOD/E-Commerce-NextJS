@@ -2,3 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    scrollbar-color: rgb(123,123,131) rgb(133,133,141);
+}
+
+body::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: #131314;
+}
+
+body::-webkit-scrollbar-track:active {
+    background: #252528;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #2f2f32;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #424247;
+}
