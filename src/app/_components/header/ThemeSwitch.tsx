@@ -14,7 +14,10 @@ const ThemeSwitch = () => {
     },[])
 
     useEffect(() => {
-        if (theme === 'dark') return document.documentElement.classList.add('dark')
+
+        if (theme === 'dark') {
+            return document.documentElement.classList.add('dark');
+        }
         document.documentElement.classList.remove('dark');
     }, [theme]);
 

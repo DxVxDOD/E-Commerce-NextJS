@@ -13,9 +13,9 @@ const Header = async () => {
     const shoppingQuery = ''
 
     return (
-        <header className={`border bg-[${shoppingQuery}] border-red-500 p-4 grid grid-cols-[1fr_3fr_1fr] gap-10`} >
+        <header className={`bg-[${shoppingQuery}] border-b-2 border-[#09090a] p-4 grid grid-cols-[1fr_3fr_1fr] gap-10`} >
           <Link href={'/'}>
-              <Image src={logo} priority={true} blurDataURL={myBlurDataUrl} width={100} height={50} alt={'Company Logo'}/>
+              <Image src={logo} priority={true} blurDataURL={myBlurDataUrl} width={150} alt={'Company Logo'}/>
           </Link>
             <SearchBar/>
             <div className={'flex gap-4 justify-end items-center'} >
