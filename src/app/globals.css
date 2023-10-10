@@ -3,29 +3,30 @@
 @tailwind utilities;
 
 html {
-    scroll-behavior: smooth;
-}
-
-body {
-    scrollbar-color: rgb(123,123,131) rgb(133,133,141);
+  scroll-behavior: smooth;
 }
 
 body::-webkit-scrollbar {
-    width: 0.5rem;
+  width: 0.5rem;
 }
 
 body::-webkit-scrollbar-track {
-    background: #131314;
+  background: #424247;
 }
 
 body::-webkit-scrollbar-track:active {
-    background: #252528;
+  background: #2f2f32;
 }
 
 body::-webkit-scrollbar-thumb {
-    background: #2f2f32;
+  background: #09090a;
+  border-radius: 0.1rem;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-    background: #424247;
+  background: #6f0000;
+}
+
+.header {
+  transition: all 0.4s ease-in-out;
 }

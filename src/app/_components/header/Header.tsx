@@ -1,31 +1,32 @@
-import Image from "next/image";
-import logo from '@/public/inet-logo-rgb-pos-new.svg'
-import Link from "next/link";
-import getBase64 from "@/utils/getLocalBase64";
-import SearchBar from "@/app/_components/header/SearchBar";
-import ThemeSwitch from "@/app/_components/header/ThemeSwitch";
-import PersonBusinessSwitch from "@/app/_components/header/PersonBusinessSwitch";
-import signIn from '@/public/sign-in-svgrepo-com.svg'
-import ShoppingCart from "@/app/_components/header/ShoppingCart";
-const Header = async () => {
-    const myBlurDataUrl = await getBase64('http://localhost:3000/inet-logo-rgb-pos-new.svg');
+"use client";
 
-    return (
-        <header className={`border-b fixed z-10 w-full border-[#7b7b83] p-4 grid grid-cols-[1fr_3fr_1fr] gap-10`} >
-          <Link href={'/'}>
-              <Image src={logo} priority={true} blurDataURL={myBlurDataUrl} width={150} alt={'Company Logo'}/>
-          </Link>
-            <SearchBar/>
-            <div className={'flex gap-4 justify-end items-center'} >
-                <PersonBusinessSwitch/>
-                <ShoppingCart/>
-                <Link href={''}>
-                    <Image src={signIn} alt={'Sign In'}/>
-                </Link>
-                <ThemeSwitch/>
-            </div>
-        </header>
-    )
-}
+import { ReactNode, useEffect } from "react";
 
-export default Header
+const Header = ({ children }: { children: ReactNode }) => {
+  useEffect(() => {
+    const header = document.getElementById("header")!;
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        header.style.height = "6rem";
+        header.style.backdropFilter = 'blur(2.5rem)';
+        header.style.borderBottom = 'solid rgba(123,123,131, 0.5) 0.5px'
+      } else {
+        header.style.height = '9rem';
+        header.style.backdropFilter = 'blur(0)'
+        header.style.borderBottom = 'none'
+      }
+    });
+  }, []);
+
+  return (
+    <header
+      id={"header"}
+      className={`header h-[8rem] fixed z-10 w-full p-4 grid grid-cols-[1fr_3fr_1fr] gap-10`}
+    >
+      {children}
+    </header>
+  );
+};
+
+export default Header;

@@ -1,9 +1,5 @@
 const AdSlider = () => {
-    return (
-        <nav>
+  return <nav></nav>;
+};
 
-        </nav>
-    )
-}
-
-export default AdSlider
+export default AdSlider;
