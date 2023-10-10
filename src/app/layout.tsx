@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/app/_components/header/Header";
-import Navbar from "@/app/_components/navbar/Navbar";
+import MainNavbar from "@/app/_components/navbar/MainNavbar";
 import Logo from "@/app/_components/header/Logo";
 import SearchBar from "@/app/_components/header/SearchBar";
 import PersonBusinessSwitch from "@/app/_components/header/PersonBusinessSwitch";
@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body
         className={
-          "dark:bg-[#1C1C1E] flex flex-col dark:text-[#cccccf] box-border overflow-x-hidden transition-all"
+          "dark:bg-[#1C1C1E] flex flex-col dark:text-[#cccccf] box-border overflow-x-hidden transition-all gap-4"
         }
       >
         <Header>
@@ -43,7 +43,7 @@ export default function RootLayout({
             <ThemeSwitch />
           </div>
         </Header>
-        <Navbar />
+        <MainNavbar />
         {children}
       </body>
     </html>
