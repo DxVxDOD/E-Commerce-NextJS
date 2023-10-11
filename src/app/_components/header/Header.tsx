@@ -9,12 +9,12 @@ const Header = ({ children }: { children: ReactNode }) => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
         header.style.height = "6rem";
-        header.style.backdropFilter = 'blur(2.5rem)';
-        header.style.borderBottom = 'solid rgba(123,123,131, 0.5) 0.5px'
+        header.style.backdropFilter = "blur(2.5rem)";
+        header.style.borderBottom = "solid rgba(123,123,131, 0.5) 0.5px";
       } else {
-        header.style.height = '9rem';
-        header.style.backdropFilter = 'blur(0)'
-        header.style.borderBottom = 'none'
+        header.style.height = "9rem";
+        header.style.backdropFilter = "blur(0)";
+        header.style.borderBottom = "none";
       }
     });
   }, []);

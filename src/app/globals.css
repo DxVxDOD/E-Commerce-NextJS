@@ -30,3 +30,12 @@ body::-webkit-scrollbar-thumb:hover {
 .header {
   transition: all 0.4s ease-out;
 }
+
+#carousel-list:nth-child(1) {
+  background: #6f0000;
+}
+
+.carousel-list-item {
+  background-size: cover;
+  background-position: center;
+}
