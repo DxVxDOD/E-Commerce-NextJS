@@ -3,6 +3,9 @@
 import { useCallback, useEffect } from "react";
 
 const AdSlider = () => {
+
+    const test = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   const findCurrent = (elementArray: HTMLElement[]): HTMLElement =>
     elementArray[Math.floor(elementArray.length / 2)];
 
@@ -14,10 +17,11 @@ const AdSlider = () => {
         const element = elements.find((el) => parseInt(el.dataset.pos!) === i)!;
         elementArray.push(element);
       }
-      console.log("update");
       const current = findCurrent(elementArray);
 
       current.classList.remove("carousel-list-item-active");
+      console.log('-----> elementsArray',elementArray[0].dataset.pos);
+      console.log(elementArray)
       elementArray.forEach(
         (item) =>
           (item.dataset.pos! = getPosition(
@@ -28,12 +32,12 @@ const AdSlider = () => {
     },
     [],
   );
+    const getPosition = (current: number, active: number) => {
 
-  const getPosition = (current: number, active: number) => {
     const diff = current - active;
+      if (Math.abs(diff) > 2) return -current;
+      return diff;
 
-    if (Math.abs(diff) > 2) return -current;
-    return diff;
   };
 
   const autoChangeSlide = useCallback(
@@ -43,14 +47,13 @@ const AdSlider = () => {
         update(next, elements);
       } else {
         update(elements[0], elements);
-        console.log("update");
       }
     },
     [update],
   );
 
   const resetInterval = useCallback(() => {
-    let intervalId = setInterval(autoChangeSlide, 2000);
+    let intervalId = setInterval(autoChangeSlide, 20000);
     clearInterval(intervalId);
   }, [autoChangeSlide]);
 
@@ -74,8 +77,6 @@ const AdSlider = () => {
     [resetInterval, update],
   );
 
-  const test = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
   useEffect(() => {
     const carouselList = document.getElementById("carousel-list")!;
     const carouselListItem: NodeListOf<HTMLElement> = document.querySelectorAll(
@@ -84,8 +85,7 @@ const AdSlider = () => {
     const elements = Array.from(carouselListItem);
 
     const current = findCurrent(elements);
-    console.log(current);
-    // current.classList.add('carousel-list-item-active')
+    current.classList.add('carousel-list-item-active')
 
       const mainIndex = Math.floor(elements.length / 2);
 
@@ -115,8 +115,9 @@ const AdSlider = () => {
       const newActive = e.target! as HTMLElement;
       const isItem = newActive.closest(".carousel-list-item")!;
 
-      if (!isItem || newActive.classList.contains("carousel-list-item-active"))
-        return;
+      if (!isItem || newActive.classList.contains("carousel-list-item-active")) {
+          return;
+      }
       update(newActive, elements);
     });
     document.addEventListener("keydown", (e) => {
