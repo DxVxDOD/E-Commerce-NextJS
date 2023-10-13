@@ -31,11 +31,24 @@ body::-webkit-scrollbar-thumb:hover {
   transition: all 0.4s ease-out;
 }
 
-#carousel-list:nth-child(1) {
-  background: #6f0000;
-}
-
 .carousel-list-item {
   background-size: cover;
   background-position: center;
 }
+
+/*.slide[data-active = 'active'] {*/
+/*  opacity: 1;*/
+/*}*/
+
+/*.slider_button {*/
+/*  position: absolute;*/
+/*  z-index: 2;*/
+/*  border: none;*/
+/*  font-size: 4rem;*/
+/*  top: 50%;*/
+/*  transform: translateY(-50%);*/
+/*  cursor: pointer;*/
+/*  border-radius: 0.25rem;*/
+/*  padding: 0 0.5rem;*/
+/*  background: rgba(255, 255, 255, 0.1) none;*/
+/*}*/

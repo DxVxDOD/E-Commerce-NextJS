@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body
         className={
-          "dark:bg-[#1C1C1E] flex flex-col dark:text-[#cccccf] box-border overflow-x-hidden transition-all gap-4"
+          "dark:bg-[#1C1C1E] flex flex-col dark:text-[#cccccf] box-border m-0 p-0 overflow-x-hidden transition-all gap-4"
         }
       >
         <Header>
