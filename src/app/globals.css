@@ -33,7 +33,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 #slider {
   --slider-index: 0;
-  --items-per-screen: 1;
+  --items-per-screen: 2;
   transform: translateX(calc(var(--slider-index) * -100%));
 }
 

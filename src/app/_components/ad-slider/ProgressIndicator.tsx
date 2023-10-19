@@ -3,13 +3,12 @@
 import { useEffect } from "react";
 
 const ProgressIndicator = () => {
-  const test = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const test = ["Saab", "Volvo", "BMW"];
 
   const calculateProgressBar = (progressBar: HTMLElement) => {
     progressBar.innerHTML = "";
 
-    const row = progressBar.closest("#slider-row")! as HTMLElement;
-    const slider: HTMLElement = row.querySelector("#slider")!;
+    const slider = document.getElementById("slider")!;
     const itemCount = slider.children.length;
 
     const itemsPerScreen = parseInt(
@@ -36,16 +35,13 @@ const ProgressIndicator = () => {
   };
 
   const onButtonClick = (handle: HTMLElement) => {
-    const progressBar: HTMLElement = handle
-      .closest("#slider-row")!
-      .querySelector("#progress-bar")!;
-    const slider: HTMLElement = handle
-      .closest("#container")!
-      .querySelector("#slider")!;
+    const progressBar = document.getElementById('progress-bar')!;
+    const slider = document.getElementById('slider')!;
     const sliderIndex = parseInt(
       getComputedStyle(slider).getPropertyValue("--slider-index"),
     );
     const progressBarItemCount = progressBar.children.length;
+
 
     if (handle.dataset.button === "prev") {
       progressBar.children[sliderIndex].classList.remove("active");
@@ -70,6 +66,7 @@ const ProgressIndicator = () => {
         progressBar.children[sliderIndex + 1].classList.add("active");
       }
     }
+    console.log(progressBar.children[sliderIndex + 1]);
   };
 
   useEffect(() => {
@@ -87,6 +84,9 @@ const ProgressIndicator = () => {
     const progressItems = document.querySelectorAll(".progress-item")!;
     progressItems[0].classList.add("active");
 
+    const progressBar = document.querySelectorAll('.progress-bar') as NodeListOf<HTMLElement>;
+    progressBar.forEach(bar => calculateProgressBar(bar));
+
   }, []);
 
   return (
@@ -100,10 +100,10 @@ const ProgressIndicator = () => {
         </h3>
       </div>
       <div id={"progress-bar"} className={"flex gap-4"}>
-        {test.map((n) => {
+        {test.map((n, index) => {
           return (
             <div className={"progress-item"} key={n}>
-              {test[n]}
+              {test[index]}
             </div>
           );
         })}
