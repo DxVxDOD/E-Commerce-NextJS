@@ -33,5 +33,19 @@ body::-webkit-scrollbar-thumb:hover {
 
 #slider {
   --slider-index: 0;
+  --items-per-screen: 1;
   transform: translateX(calc(var(--slider-index) * -100%));
+}
+
+#slider > .slide {
+  flex: 0 0 calc(100% / var(--items-per-screen));
+  max-width: calc(100% / var(--items-per-screen));
+}
+
+.progress-item {
+  background-color: blue;
+}
+
+.progress-item.active {
+  background-color: #6f0000;
 }
