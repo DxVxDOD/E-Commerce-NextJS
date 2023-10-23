@@ -31,32 +31,6 @@ body::-webkit-scrollbar-thumb:hover {
   transition: all 0.4s ease-out;
 }
 
-.section {
-  background-color: #424247;
-  min-height: 100vh;
-  margin-bottom: 8em;
-  margin-top: 4em;
-}
-
-.desktop-wrapper {
-  width: 100vw;
-  margin-top: 12vh;
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 100vh;
-}
-
-.carousel {
-  display: flex;
-  width: 100%;
-  align-content: space-around;
-}
-.carousel__list {
-  display: flex;
-  list-style: none;
-  position: relative;
-  justify-content: center;
-}
 .carousel__item {
   display: flex;
   align-items: flex-end;

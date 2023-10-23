@@ -61,7 +61,7 @@ const AdSlider = () => {
   };
 
   useEffect(() => {
-    const carouselList = document.querySelector(".carousel-list")!;
+    const carouselList = document.getElementById("carousel-list")!;
     const carouselItems: NodeListOf<HTMLElement> =
       document.querySelectorAll(".carousel__item");
     const elements = Array.from(carouselItems);
@@ -81,13 +81,10 @@ const AdSlider = () => {
   return (
     <section
       aria-label={"latest news"}
-      className={"section border border-red-500 p-4"}
-      id={"section"}
+      className={"border border-red-500 p-4 w-full h-full bg-[#424247]"}
     >
-      <div id={"desktop-wrapper"} className={"desktop-wrapper"}>
-        <div id={"carousel-reflect"} className={"carousel reflect"}>
           <ul
-            className={"carousel-list"}
+            className={"flex list-none relative justify-center items-center h-full w-full"}
             id={"carousel-list"}
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -99,8 +96,6 @@ const AdSlider = () => {
             <li className="carousel__item" data-pos="1"></li>
             <li className="carousel__item" data-pos="2"></li>
           </ul>
-        </div>
-      </div>
     </section>
   );
 };
