@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 
-const ItemSlider = () => {
+const ItemSlider = ({ children }: { children: ReactNode }) => {
+
   const onButtonPress = (button: HTMLElement) => {
     const progressBar: HTMLElement = button
       .closest(".row")!
@@ -15,7 +16,7 @@ const ItemSlider = () => {
     );
     const progressBarItemCount = progressBar.children.length;
 
-    if (button.classList.contains("prev-slide")) {
+    if (button.classList.contains("next-slide")) {
       if (sliderIndex - 1 < 0) {
         slider.style.setProperty(
           "--slider-index",
@@ -29,7 +30,7 @@ const ItemSlider = () => {
         progressBar.children[sliderIndex - 1].classList.add("active");
       }
     }
-    if (button.classList.contains("next-slide")) {
+    if (button.classList.contains("prev-slide")) {
       if (sliderIndex + 1 >= progressBarItemCount) {
         slider.style.setProperty("--slider-index", `${0}`);
         progressBar.children[sliderIndex].classList.remove("active");
@@ -44,8 +45,8 @@ const ItemSlider = () => {
 
   const throttle = (callBackFunc: () => void, delay = 1000) => {
     const timeoutFunction = () => {
-        callBackFunc();
-        setTimeout(timeoutFunction, delay);
+      callBackFunc();
+      setTimeout(timeoutFunction, delay);
     };
     return () => {
       callBackFunc();
@@ -110,23 +111,12 @@ const ItemSlider = () => {
         <h3 className="title">Title</h3>
         <div className="progress-bar"></div>
       </div>
-      <div className="container">
+      <div className="container flex justify-center overflow-hidden">
         <button className="button prev-slide">
           <div className="text">&#8249;</div>
         </button>
-        <div className="slider">
-          <img src="https://via.placeholder.com/210/00FF00?text=1" />
-          <img src="https://via.placeholder.com/220/00FF00?text=2" />
-          <img src="https://via.placeholder.com/230/00FF00?text=3" />
-          <img src="https://via.placeholder.com/240/00FF00?text=4" />
-          <img src="https://via.placeholder.com/250/00FF00?text=5" />
-          <img src="https://via.placeholder.com/260/00FF00?text=6" />
-          <img src="https://via.placeholder.com/270/00FF00?text=7" />
-          <img src="https://via.placeholder.com/280/00FF00?text=8" />
-          <img src="https://via.placeholder.com/250/00FF00?text=9" />
-          <img src="https://via.placeholder.com/260/00FF00?text=10" />
-          <img src="https://via.placeholder.com/270/00FF00?text=11" />
-          <img src="https://via.placeholder.com/280/00FF00?text=12" />
+        <div className="slider flex m-0 grow">
+          {children}
         </div>
         <button className="button next-slide">
           <div className="text">&#8250;</div>
