@@ -81,21 +81,38 @@ const AdSlider = () => {
   return (
     <section
       aria-label={"latest news"}
-      className={"border border-red-500 p-4 w-full h-full bg-[#424247]"}
+      className={"border border-red-500 p-4 w-[99%] h-[65vh]"}
     >
-          <ul
-            className={"flex list-none relative justify-center items-center h-full w-full"}
-            id={"carousel-list"}
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-easing="ease"
-          >
-            <li className="carousel__item" data-pos="-2"></li>
-            <li className="carousel__item" data-pos="-1"></li>
-            <li className="carousel__item" data-pos="0"></li>
-            <li className="carousel__item" data-pos="1"></li>
-            <li className="carousel__item" data-pos="2"></li>
-          </ul>
+      <ul
+        className={
+          "flex list-none relative justify-center items-center h-full w-full"
+        }
+        id={"carousel-list"}
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-easing="ease"
+      >
+        <li
+          className="carousel__item w-[55vw] max-w-[1000px] aspect-video rounded absolute bg-[#09090a] border-[1px] border-opacity-[0.2] border-[#09090a]"
+          data-pos="-2"
+        ></li>
+        <li
+          className="carousel__item w-[55vw] max-w-[1000px] aspect-video rounded absolute bg-[#09090a] border-[1px] border-opacity-[0.2] border-[#09090a]"
+          data-pos="-1"
+        ></li>
+        <li
+          className="carousel__item w-[55vw] max-w-[1000px] aspect-video rounded absolute bg-[#09090a] border-[1px] border-opacity-[0.2] border-[#09090a]"
+          data-pos="0"
+        ></li>
+        <li
+          className="carousel__item w-[55vw] max-w-[1000px] aspect-video rounded absolute bg-[#09090a] border-[1px] border-opacity-[0.2] border-[#09090a]"
+          data-pos="1"
+        ></li>
+        <li
+          className="carousel__item w-[55vw] max-w-[1000px] aspect-video rounded absolute bg-[#09090a] border-[1px] border-opacity-[0.2] border-[#09090a]"
+          data-pos="2"
+        ></li>
+      </ul>
     </section>
   );
 };
