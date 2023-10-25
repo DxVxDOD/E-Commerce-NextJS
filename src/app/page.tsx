@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className=" flex flex-col items-center w-full h-full">
       <AdSlider />
-      <ItemSlider>
+      <ItemSlider title={'Categories'} >
         <img src="https://via.placeholder.com/210/00FF00?text=1" />
         <img src="https://via.placeholder.com/220/00FF00?text=2" />
         <img src="https://via.placeholder.com/230/00FF00?text=3" />

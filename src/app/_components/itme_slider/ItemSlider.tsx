@@ -2,21 +2,26 @@
 
 import { ReactNode, useEffect } from "react";
 
-const ItemSlider = ({ children }: { children: ReactNode }) => {
-
+const ItemSlider = ({
+  children,
+  title,
+}: {
+  children: ReactNode;
+  title: string;
+}) => {
   const onButtonPress = (button: HTMLElement) => {
     const progressBar: HTMLElement = button
       .closest(".row")!
       .querySelector(".progress-bar")!;
     const slider: HTMLElement = button
-      .closest(".container")!
+      .closest(".progress-container")!
       .querySelector(".slider")!;
     const sliderIndex = parseInt(
       getComputedStyle(slider).getPropertyValue("--slider-index"),
     );
     const progressBarItemCount = progressBar.children.length;
 
-    if (button.classList.contains("next-slide")) {
+    if (button.id === "next-slide") {
       if (sliderIndex - 1 < 0) {
         slider.style.setProperty(
           "--slider-index",
@@ -30,7 +35,7 @@ const ItemSlider = ({ children }: { children: ReactNode }) => {
         progressBar.children[sliderIndex - 1].classList.add("active");
       }
     }
-    if (button.classList.contains("prev-slide")) {
+    if (button.id === "prev-slide") {
       if (sliderIndex + 1 >= progressBarItemCount) {
         slider.style.setProperty("--slider-index", `${0}`);
         progressBar.children[sliderIndex].classList.remove("active");
@@ -106,20 +111,20 @@ const ItemSlider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <div className="row">
-      <div className="header">
-        <h3 className="title">Title</h3>
-        <div className="progress-bar"></div>
+    <div className="row flex flex-col w-3/4 items-center p-4">
+      <div className="flex justify-between w-full items-center p-4">
+        <h3 className="m-0 text-xl">{title}</h3>
+        <div className="progress-bar flex gap-2"></div>
       </div>
-      <div className="container flex justify-center overflow-hidden">
-        <button className="button prev-slide">
-          <div className="text">&#8249;</div>
+      <div className="progress-container flex w-full items-center overflow-hidden">
+        <button id={'prev-slide'} className="button border-none rounded-l-lg opacity-80 hover:opacity-100 focus:opacity-100 bg-[#7b7b83] z-10 m-0 w-12 cursor-pointer hover:text-[#09090a] active:text-[#09090a] text-6xl flex items-center justify-center transition-all hover:bg-[#cccccf] active::bg-[#cccccf] -translate-x-12">
+          <div id={'left-arrow'} >&#8249;</div>
         </button>
-        <div className="slider flex m-0 grow">
+        <div className="slider flex m-0 w-full">
           {children}
         </div>
-        <button className="button next-slide">
-          <div className="text">&#8250;</div>
+        <button id={'next-slide'} className="button border border-[#cccccf] rounded-r-lg opacity-80 hover:opacity-100 focus:opacity-100 bg-[#7b7b83] z-10 m-0 w-12 cursor-pointer hover:text-[#09090a] active:text-[#09090a] text-6xl flex items-center justify-center transition-all hover:bg-[#cccccf] active::bg-[#cccccf] translate-x-12">
+          <div className="">&#8250;</div>
         </button>
       </div>
     </div>
