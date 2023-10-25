@@ -111,23 +111,29 @@ const ItemSlider = ({
   }, []);
 
   return (
-    <div className="row flex flex-col w-3/4 items-center p-4">
+    <section className="row flex flex-col w-3/4 items-center p-4">
       <div className="flex justify-between w-full items-center p-4">
         <h3 className="m-0 text-xl">{title}</h3>
         <div className="progress-bar flex gap-2"></div>
       </div>
-      <div className="progress-container flex w-full items-center overflow-hidden">
-        <button id={'prev-slide'} className="button border-none rounded-l-lg opacity-80 hover:opacity-100 focus:opacity-100 bg-[#7b7b83] z-10 m-0 w-12 cursor-pointer hover:text-[#09090a] active:text-[#09090a] text-6xl flex items-center justify-center transition-all hover:bg-[#cccccf] active::bg-[#cccccf] -translate-x-12">
-          <div id={'left-arrow'} >&#8249;</div>
+      <nav className="progress-container flex w-full items-center overflow-hidden">
+        <button
+          id={"prev-slide"}
+          aria-label={"button for showing the previous items"}
+          className="button rounded-l opacity-80 hover:opacity-100 focus:opacity-100 bg-[#7b7b83] z-10 h-fit m-0 cursor-pointer hover:text-[#09090a] active:text-[#09090a] text-6xl flex items-center justify-center transition-all hover:bg-[#cccccf] active::bg-[#cccccf] -translate-x-12"
+        >
+          <span>&#8249;</span>
         </button>
-        <div className="slider flex m-0 w-full">
-          {children}
-        </div>
-        <button id={'next-slide'} className="button border border-[#cccccf] rounded-r-lg opacity-80 hover:opacity-100 focus:opacity-100 bg-[#7b7b83] z-10 m-0 w-12 cursor-pointer hover:text-[#09090a] active:text-[#09090a] text-6xl flex items-center justify-center transition-all hover:bg-[#cccccf] active::bg-[#cccccf] translate-x-12">
-          <div className="">&#8250;</div>
+        <div className="slider flex m-0 w-full">{children}</div>
+        <button
+          aria-label={"button for showing the next items"}
+          id={"next-slide"}
+          className="button rounded-r opacity-80 hover:opacity-100 focus:opacity-100 bg-[#7b7b83] z-10 m-0 h-fit cursor-pointer hover:text-[#09090a] active:text-[#09090a] text-6xl flex items-center justify-center transition-all hover:bg-[#cccccf] active::bg-[#cccccf] translate-x-12"
+        >
+          <span>&#8250;</span>
         </button>
-      </div>
-    </div>
+      </nav>
+    </section>
   );
 };
 

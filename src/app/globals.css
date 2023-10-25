@@ -100,7 +100,8 @@ body::-webkit-scrollbar-thumb:hover {
 /*to adjust*/
 
 :root {
-  --img-gap: .25rem;
+  --img-gap: 0.25rem;
+  --button-width: 3rem;
 }
 
 .slider {
@@ -115,7 +116,11 @@ body::-webkit-scrollbar-thumb:hover {
   max-width: calc(100% / var(--items-per-screen));
   aspect-ratio: 16 / 9;
   padding: var(--img-gap);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
+}
+
+.button {
+  width: var(--button-width);
 }
 
 .progress-container:hover > #next-slide,
@@ -123,13 +128,12 @@ body::-webkit-scrollbar-thumb:hover {
   transform: translateX(0%);
 }
 
-.progress-container:hover > #next-slide:hover {
-  transform: translateX(-0.25rem) scale(1.15);
+.progress-container:hover > #prev-slide:hover {
+  transform: translateX(calc(var(--button-width) * 0.075)) scale(1.15);
 }
 
-.progress-container:hover > #prev-slide:hover {
-  transform: translateX(0.25rem) scale(1.15);
-  color-;
+.progress-container:hover > #next-slide:hover {
+  transform: translateX(calc(var(--button-width) * -0.075)) scale(1.15);
 }
 
 .progress-item {
