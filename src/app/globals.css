@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+:root {
+  --img-gap: 0.25rem;
+  --button-width: 3rem;
+  --slider-index: 0;
+  --items-per-screen: 4;
   scroll-behavior: smooth;
 }
 
@@ -30,17 +34,16 @@ body::-webkit-scrollbar-thumb:hover {
 .header {
   transition: all 0.4s ease-out;
 }
-
 .carousel__item {
   transition: all 0.25s ease-in-out;
   box-shadow: 0 0 20px 0 hsla(0deg 0% 0% / 0.4);
 }
+
 .carousel__item:hover {
   border: hsla(0deg 0% 100% / 1) solid 1px;
   box-shadow: 0 0 45px 0 hsla(0deg 0% 60% / 0.8);
   transition: all 0.25s ease-in-out;
 }
-
 .carousel__item:nth-child(1) {
   background-image: url(https://images.pexels.com/photos/5400806/pexels-photo-5400806.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   background-position: center;
@@ -66,12 +69,12 @@ body::-webkit-scrollbar-thumb:hover {
   background-position: center;
   background-size: cover;
 }
+
 .carousel__item[data-pos="0"] {
   z-index: 5;
   border: solid 1px hsla(0deg 0% 90% / 0.7);
   box-shadow: 0 0 60px 0 hsla(0deg 0% 100% / 0.25);
 }
-
 .carousel__item[data-pos="-1"],
 .carousel__item[data-pos="1"] {
   filter: brightness(50%);
@@ -92,6 +95,7 @@ body::-webkit-scrollbar-thumb:hover {
   transform: translateX(-25%) scale(0.8);
   z-index: 3;
 }
+
 .carousel__item[data-pos="2"] {
   transform: translateX(25%) scale(0.8);
   z-index: 3;
@@ -99,15 +103,9 @@ body::-webkit-scrollbar-thumb:hover {
 
 /*to adjust*/
 
-:root {
-  --img-gap: 0.25rem;
-  --button-width: 3rem;
-}
-
 .slider {
-  --items-per-screen: 4;
-  --slider-index: 0;
   transform: translateX(calc(var(--slider-index) * -100%));
+  flex-grow: 1;
   transition: transform 250ms ease-in-out;
 }
 
@@ -141,10 +139,6 @@ body::-webkit-scrollbar-thumb:hover {
   height: 0.5rem;
   border-radius: 25%;
   background-color: #7b7b83;
-}
-
-#left-arrow {
-  opacity: revert;
 }
 
 .progress-item.active {

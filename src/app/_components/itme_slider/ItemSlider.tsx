@@ -120,7 +120,7 @@ const ItemSlider = ({
         <button
           id={"prev-slide"}
           aria-label={"button for showing the previous items"}
-          className="button rounded-l opacity-80 hover:opacity-100 focus:opacity-100 bg-[#7b7b83] z-10 h-fit m-0 cursor-pointer hover:text-[#09090a] active:text-[#09090a] text-6xl flex items-center justify-center transition-all hover:bg-[#cccccf] active::bg-[#cccccf] -translate-x-12"
+          className="button rounded-l bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#cccccf] z-10 h-fit m-0 cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-6xl flex items-center justify-center transition-all active:bg-[#cccccf] -translate-x-12"
         >
           <span>&#8249;</span>
         </button>
@@ -128,7 +128,7 @@ const ItemSlider = ({
         <button
           aria-label={"button for showing the next items"}
           id={"next-slide"}
-          className="button rounded-r opacity-80 hover:opacity-100 focus:opacity-100 bg-[#7b7b83] z-10 m-0 h-fit cursor-pointer hover:text-[#09090a] active:text-[#09090a] text-6xl flex items-center justify-center transition-all hover:bg-[#cccccf] active::bg-[#cccccf] translate-x-12"
+          className="button rounded-r bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#cccccf] z-10 m-0 h-fit cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-6xl flex items-center justify-center transition-all active:bg-[#cccccf] translate-x-12"
         >
           <span>&#8250;</span>
         </button>
