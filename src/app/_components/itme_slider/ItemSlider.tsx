@@ -9,27 +9,26 @@ const ItemSlider = ({
   children: ReactNode;
   title: string;
 }) => {
-
-  const sliderRef = useRef<HTMLDivElement>(null);
   const onButtonPress = (button: HTMLElement) => {
     const progressBar: HTMLElement = button
       .closest(".row")!
       .querySelector(".progress-bar")!;
-    // const slider: HTMLElement = button
-    //   .closest(`.progress-container`)!
-    //   .querySelector(`.slider`)!;
-
-    const slider = sliderRef.current!;
+    const slider: HTMLElement = button
+      .closest(`.progress-container`)!
+      .querySelector(`.slider`)!;
+    const closestTitle: HTMLElement = button
+      .closest(".row")!
+      .querySelector(".slider")!;
 
     const sliderIndex = parseInt(
       getComputedStyle(slider).getPropertyValue("--slider-index"),
     );
     const progressBarItemCount = progressBar.children.length;
 
-    console.log("----> null", sliderRef.current!.dataset.title);
-    console.log('slider', slider);
-
-    if (button.id === "prev-slide" && sliderRef.current!.dataset.title === title) {
+    if (
+      button.dataset.button === "previous" &&
+      title === closestTitle.dataset.title
+    ) {
       if (sliderIndex - 1 < 0) {
         slider.style.setProperty(
           "--slider-index",
@@ -43,7 +42,10 @@ const ItemSlider = ({
         progressBar.children[sliderIndex - 1].classList.add("active");
       }
     }
-    if (button.id === "next-slide") {
+    if (
+      button.dataset.button === "next" &&
+      title === closestTitle.dataset.title
+    ) {
       if (sliderIndex + 1 >= progressBarItemCount) {
         slider.style.setProperty("--slider-index", `${0}`);
         progressBar.children[sliderIndex].classList.remove("active");
@@ -130,16 +132,18 @@ const ItemSlider = ({
         className={`progress-container flex w-full items-center overflow-hidden`}
       >
         <button
-          id={"prev-slide"}
+          data-button={"previous"}
           aria-label={"button for showing the previous items"}
           className="button rounded-l bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#cccccf] z-10 h-fit m-0 cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-6xl flex items-center justify-center transition-all active:bg-[#cccccf] -translate-x-12"
         >
           <span>&#8249;</span>
         </button>
-        <div data-title={title} ref={sliderRef} className={`slider flex m-0 w-full`}>{children}</div>
+        <div data-title={title} className={`slider flex m-0 w-full`}>
+          {children}
+        </div>
         <button
           aria-label={"button for showing the next items"}
-          id={"next-slide"}
+          data-button={"next"}
           className="button rounded-r bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#cccccf] z-10 m-0 h-fit cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-6xl flex items-center justify-center transition-all active:bg-[#cccccf] translate-x-12"
         >
           <span>&#8250;</span>

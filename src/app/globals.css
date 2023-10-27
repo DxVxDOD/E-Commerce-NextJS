@@ -121,16 +121,16 @@ body::-webkit-scrollbar-thumb:hover {
   width: var(--button-width);
 }
 
-.progress-container:hover > #next-slide,
-.progress-container:hover > #prev-slide {
+.progress-container:hover > [data-button='next'],
+.progress-container:hover > [data-button='previous'] {
   transform: translateX(0%);
 }
 
-.progress-container:hover > #prev-slide:hover {
+.progress-container:hover > [data-button='previous']:hover {
   transform: translateX(calc(var(--button-width) * 0.075)) scale(1.15);
 }
 
-.progress-container:hover > #next-slide:hover {
+.progress-container:hover > [data-button='next']:hover {
   transform: translateX(calc(var(--button-width) * -0.075)) scale(1.15);
 }
 
