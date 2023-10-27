@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 
 const ItemSlider = ({
   children,
@@ -9,19 +9,27 @@ const ItemSlider = ({
   children: ReactNode;
   title: string;
 }) => {
+
+  const sliderRef = useRef<HTMLDivElement>(null);
   const onButtonPress = (button: HTMLElement) => {
     const progressBar: HTMLElement = button
       .closest(".row")!
       .querySelector(".progress-bar")!;
-    const slider: HTMLElement = button
-      .closest(".progress-container")!
-      .querySelector(".slider")!;
+    // const slider: HTMLElement = button
+    //   .closest(`.progress-container`)!
+    //   .querySelector(`.slider`)!;
+
+    const slider = sliderRef.current!;
+
     const sliderIndex = parseInt(
       getComputedStyle(slider).getPropertyValue("--slider-index"),
     );
     const progressBarItemCount = progressBar.children.length;
 
-    if (button.id === "next-slide") {
+    console.log("----> null", sliderRef.current!.dataset.title);
+    console.log('slider', slider);
+
+    if (button.id === "prev-slide" && sliderRef.current!.dataset.title === title) {
       if (sliderIndex - 1 < 0) {
         slider.style.setProperty(
           "--slider-index",
@@ -35,7 +43,7 @@ const ItemSlider = ({
         progressBar.children[sliderIndex - 1].classList.add("active");
       }
     }
-    if (button.id === "prev-slide") {
+    if (button.id === "next-slide") {
       if (sliderIndex + 1 >= progressBarItemCount) {
         slider.style.setProperty("--slider-index", `${0}`);
         progressBar.children[sliderIndex].classList.remove("active");
@@ -61,7 +69,9 @@ const ItemSlider = ({
 
   const calculateProgressBar = (progressBar: Element) => {
     progressBar.innerHTML = "";
-    const slider: HTMLElement = document.querySelector(".slider")!;
+    const slider: HTMLElement = progressBar
+      .closest(".row")!
+      .querySelector(".slider")!;
     const itemCount = slider.children.length;
     const itemPerScreen = parseInt(
       getComputedStyle(slider).getPropertyValue("--items-per-screen"),
@@ -90,13 +100,13 @@ const ItemSlider = ({
     window.addEventListener(
       "resize",
       throttle(() => {
-        const progressBar = document.querySelector(".progress-bar")!;
-        calculateProgressBar(progressBar);
+        const progressBar = document.querySelectorAll(".progress-bar")!;
+        progressBar.forEach(calculateProgressBar);
       }, 250),
     );
 
-    const progressBar = document.querySelector(".progress-bar")!;
-    calculateProgressBar(progressBar);
+    const progressBar = document.querySelectorAll(".progress-bar")!;
+    progressBar.forEach(calculateProgressBar);
 
     document.addEventListener("click", (e) => {
       let button: HTMLElement;
@@ -111,12 +121,14 @@ const ItemSlider = ({
   }, []);
 
   return (
-    <section className="row flex flex-col w-3/4 items-center p-4">
+    <section className="row border border-red-500 flex flex-col w-3/4 items-center p-4">
       <div className="flex justify-between w-full items-center p-4">
         <h3 className="m-0 text-xl">{title}</h3>
         <div className="progress-bar flex gap-2"></div>
       </div>
-      <nav className="progress-container flex w-full items-center overflow-hidden">
+      <nav
+        className={`progress-container flex w-full items-center overflow-hidden`}
+      >
         <button
           id={"prev-slide"}
           aria-label={"button for showing the previous items"}
@@ -124,7 +136,7 @@ const ItemSlider = ({
         >
           <span>&#8249;</span>
         </button>
-        <div className="slider flex m-0 w-full">{children}</div>
+        <div data-title={title} ref={sliderRef} className={`slider flex m-0 w-full`}>{children}</div>
         <button
           aria-label={"button for showing the next items"}
           id={"next-slide"}
