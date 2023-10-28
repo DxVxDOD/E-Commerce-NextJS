@@ -21,7 +21,7 @@ import Card from "@/app/_components/Card";
 
 export default function Home() {
   return (
-    <main className=" flex flex-col items-center w-full h-full">
+    <main className=" flex flex-col items-center gap-4 w-full h-full">
       <AdSlider />
       <ItemSlider title={'Test'} >
         <img src="https://via.placeholder.com/210/00FF00?text=1" />
@@ -38,28 +38,86 @@ export default function Home() {
         <img src="https://via.placeholder.com/280/00FF00?text=12" />
       </ItemSlider>
       <ItemSlider title={'Categories'}>
-        <Card>
+        <Card categories={true} link={''}>
           <Image src={computers} alt={'Computers'}/>
         </Card>
-        <Card>
+        <Card categories={true} link={''}>
           <Image src={computer_components} alt={'Computer Components'}/>
         </Card>
-        <Card>
+        <Card categories={true} link={''}>
           <Image src={screens} alt={'Screens'}/>
         </Card>
-        <Image src={computer_accessories} alt={'Computer Accessories'}/>
-        <Image src={smart_home} alt={'Smart Home'}/>
+        <Card categories={true} link={''}>
+          <Image src={computer_accessories} alt={'Computer Accessories'}/>
+        </Card>
+        <Card categories={true} link={''}>
+          <Image src={smart_home} alt={'Smart Home'}/>
+        </Card>
+        <Card categories={true} link={''}>
         <Image src={game_console_vr} alt={'Game | Console | VR'}/>
-        <Image src={external_storage} alt={'External Storage'}/>
-        <Image src={home_leisure_health} alt={'Home | Leisure | Health'}/>
-        <Image src={cable_adapters} alt={'Cable | Adapters'}/>
-        <Image src={sound_image} alt={'Sound | Image'}/>
-        <Image src={mobile_phones} alt={'Mobile Phones'}/>
-        <Image src={network} alt={'Network'}/>
-        <Image src={gift_cards} alt={'Gift Cards'}/>
-        <Image src={software} alt={'Software'}/>
-        <Image src={printer_scanner} alt={'Printer | Scanner'}/>
-        <Image src={tablet} alt={'Tablets'}/>
+        </Card>
+        <Card categories={true} link={''}>
+          <Image src={external_storage} alt={'External Storage'}/>
+        </Card>
+        <Card categories={true} link={''}>
+          <Image src={home_leisure_health} alt={'Home | Leisure | Health'}/>
+        </Card>
+        <Card categories={true} link={''}>
+          <Image src={cable_adapters} alt={'Cable | Adapters'}/>
+        </Card>
+        <Card categories={true} link={''}>
+          <Image src={sound_image} alt={'Sound | Image'}/>
+        </Card>
+        <Card categories={true} link={''}>
+          <Image src={mobile_phones} alt={'Mobile Phones'}/>
+        </Card>
+        <Card categories={true} link={''}>
+          <Image src={network} alt={'Network'}/>
+        </Card>
+        <Card categories={true} link={''}>
+          <Image src={gift_cards} alt={'Gift Cards'}/>
+        </Card>
+        <Card categories={true} link={''}>
+          <Image src={software} alt={'Software'}/>
+        </Card>
+        <Card categories={true} link={''}>
+          <Image src={printer_scanner} alt={'Printer | Scanner'}/>
+        </Card>
+        <Card categories={true} link={''}>
+          <Image src={tablet} alt={'Tablets'}/>
+        </Card>
+      </ItemSlider>
+      <ItemSlider title={'Promotions'}>
+        <Card link={''} categories={false}>
+          <img alt={''} src="https://via.placeholder.com/210/00FF00?text=1" />
+        </Card>
+        <Card link={''} categories={false}>
+          <img alt={''} src="https://via.placeholder.com/210/00FF00?text=1" />
+        </Card>
+        <Card link={''} categories={false}>
+          <img alt={''} src="https://via.placeholder.com/210/00FF00?text=1" />
+        </Card>
+        <Card link={''} categories={false}>
+          <img alt={''} src="https://via.placeholder.com/210/00FF00?text=1" />
+        </Card>
+        <Card link={''} categories={false}>
+          <img alt={''} src="https://via.placeholder.com/210/00FF00?text=1" />
+        </Card>
+        <Card link={''} categories={false}>
+          <img alt={''} src="https://via.placeholder.com/210/00FF00?text=1" />
+        </Card>
+        <Card link={''} categories={false}>
+          <img alt={''} src="https://via.placeholder.com/210/00FF00?text=1" />
+        </Card>
+        <Card link={''} categories={false}>
+          <img alt={''} src="https://via.placeholder.com/210/00FF00?text=1" />
+        </Card>
+        <Card link={''} categories={false}>
+          <img alt={''} src="https://via.placeholder.com/210/00FF00?text=1" />
+        </Card>
+        <Card link={''} categories={false}>
+          <img alt={''} src="https://via.placeholder.com/210/00FF00?text=1" />
+        </Card>
       </ItemSlider>
     </main>
   );

@@ -81,7 +81,7 @@ const AdSlider = () => {
   return (
     <section
       aria-label={"latest news"}
-      className={"border border-red-500 p-4 w-[99%] h-[65vh]"}
+      className={"border border-red-500 p-4 w-[99%] min-h-[65vh]"}
     >
       <ul
         className={
