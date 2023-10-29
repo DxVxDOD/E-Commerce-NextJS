@@ -5,7 +5,6 @@
 :root {
   --img-gap: 0.25rem;
   --button-width: 3rem;
-  --slider-index: 0;
   --items-per-screen: 4;
   scroll-behavior: smooth;
 }
@@ -103,13 +102,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 /*to adjust*/
 
-.slider {
-  /*transform: translateX(calc(var(--slider-index) * -100%));*/
-  flex-grow: 1;
-  transition: transform 250ms ease-in-out;
-}
-
-.slider > * {
+.children-container > * {
   flex: 0 0 calc(100% / var(--items-per-screen));
   max-width: calc(100% / var(--items-per-screen));
   aspect-ratio: 16 / 9;
@@ -117,30 +110,31 @@ body::-webkit-scrollbar-thumb:hover {
   border-radius: 0.5rem;
 }
 
+
+
 .button {
   width: var(--button-width);
 }
 
-.progress-container {
-  scroll-behavior: smooth;
+.slider {
   scrollbar-width: none;
 }
 
-.progress-container::-webkit-scrollbar {
+.slider::-webkit-scrollbar {
   height: 0;
 }
 
-.progress-container:hover > [data-button='next'],
-.progress-container:hover > [data-button='previous'] {
-  transform: translateX(0%);
+.slider-container:hover > [data-button='next'],
+.slider-container:hover > [data-button='previous'] {
+  /*transform: translateX(0%);*/
 }
 
-.progress-container:hover > [data-button='previous']:hover {
-  transform: translateX(calc(var(--button-width) * 0.075)) scale(1.15);
+.slider-container:hover > [data-button='previous']:hover {
+  /*transform: translateX(calc(var(--button-width) * 0.075)) scale(1.15);*/
 }
 
-.progress-container:hover > [data-button='next']:hover {
-  transform: translateX(calc(var(--button-width) * -0.075)) scale(1.15);
+.slider-container:hover > [data-button='next']:hover {
+  /*transform: translateX(calc(var(--button-width) * -0.075)) scale(1.15);*/
 }
 
 .progress-item {
@@ -154,14 +148,14 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: #cccccf;
 }
 
-@media (max-width: 1000px) {
-  .slider {
-    --items-per-screen: 3;
-  }
-}
+/*@media (max-width: 1000px) {*/
+/*  .slider {*/
+/*    --items-per-screen: 3;*/
+/*  }*/
+/*}*/
 
-@media (max-width: 500px) {
-  .slider {
-    --items-per-screen: 2;
-  }
-}
+/*@media (max-width: 500px) {*/
+/*  .slider {*/
+/*    --items-per-screen: 2;*/
+/*  }*/
+/*}*/
