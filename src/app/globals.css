@@ -102,6 +102,10 @@ body::-webkit-scrollbar-thumb:hover {
 
 /*to adjust*/
 
+.children-container {
+  --slider-index: 0;
+}
+
 .children-container > * {
   flex: 0 0 calc(100% / var(--items-per-screen));
   max-width: calc(100% / var(--items-per-screen));
@@ -109,8 +113,6 @@ body::-webkit-scrollbar-thumb:hover {
   padding: var(--img-gap);
   border-radius: 0.5rem;
 }
-
-
 
 .button {
   width: var(--button-width);
@@ -126,15 +128,15 @@ body::-webkit-scrollbar-thumb:hover {
 
 .slider-container:hover > [data-button='next'],
 .slider-container:hover > [data-button='previous'] {
-  /*transform: translateX(0%);*/
+  transform: translateX(0%);
 }
 
 .slider-container:hover > [data-button='previous']:hover {
-  /*transform: translateX(calc(var(--button-width) * 0.075)) scale(1.15);*/
+  transform: translateX(calc(var(--button-width) * 0.075)) scale(1.15);
 }
 
 .slider-container:hover > [data-button='next']:hover {
-  /*transform: translateX(calc(var(--button-width) * -0.075)) scale(1.15);*/
+  transform: translateX(calc(var(--button-width) * -0.075)) scale(1.15);
 }
 
 .progress-item {
@@ -146,6 +148,11 @@ body::-webkit-scrollbar-thumb:hover {
 
 .progress-item.active {
   background-color: #cccccf;
+}
+
+.progress-bar-inner {
+  width: 0;
+  position: absolute;
 }
 
 /*@media (max-width: 1000px) {*/
