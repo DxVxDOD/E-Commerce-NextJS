@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEvent, useEffect, useRef } from "react";
+import { MouseEvent, useRef } from "react";
 
 const AdSlider = () => {
   const carouselListRef = useRef<HTMLUListElement>(null);

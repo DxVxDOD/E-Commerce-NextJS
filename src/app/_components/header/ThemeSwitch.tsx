@@ -8,17 +8,16 @@ const ThemeSwitch = () => {
   const [theme, setTheme] = useState<null | string>(null);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       return setTheme("dark");
-    setTheme("light");
+    }
   }, []);
 
-  useEffect(() => {
-    if (theme === "dark") {
-      return document.documentElement.classList.add("dark");
-    }
+  if (theme === "dark") {
+    document.documentElement.classList.add("dark")
+  } else {
     document.documentElement.classList.remove("dark");
-  }, [theme]);
+  }
 
   const handleThemeSwitch = () => setTheme(theme === "dark" ? "light" : "dark");
 

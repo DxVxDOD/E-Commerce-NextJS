@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useRef, MouseEvent } from "react";
 
 const ItemSlider = ({
   children,
@@ -9,6 +9,12 @@ const ItemSlider = ({
   children: ReactNode;
   title: string;
 }) => {
+
+  const sliderContainerRef = useRef<HTMLElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const childrenContainerRef = useRef<HTMLDivElement>(null);
+  const nextButtonRef = useRef<HTMLButtonElement>(null);
+  const previousButtonRef = useRef<HTMLButtonElement>(null);
 
   // needs work, progress indicator doesn't move correctly
   const moveProgressIndicator = (button: HTMLButtonElement) => {
@@ -61,54 +67,6 @@ const ItemSlider = ({
     }
   };
 
-  const onButtonPress = (container: HTMLElement) => {
-    const slider = container.querySelector(".slider") as HTMLElement;
-    const childrenContainer = slider.querySelector(
-      ".children-container",
-    ) as HTMLElement;
-    const next = container
-      .closest(".row")!
-      .querySelector('[data-button="next"]') as HTMLButtonElement;
-    const previous = container
-      .closest(".row")!
-      .querySelector('[data-button="previous"]') as HTMLButtonElement;
-
-    const gap = parseInt(
-      getComputedStyle(childrenContainer).getPropertyValue("gap"),
-    );
-    let width = container.offsetWidth;
-
-    next.addEventListener("click", (e) => {
-      slider.scrollBy(width + gap, 0);
-      if (slider.scrollWidth !== 0) {
-        previous.style.visibility = "visible";
-      }
-      if (
-        childrenContainer.scrollWidth - width - gap <=
-        slider.scrollLeft + width
-      ) {
-        next.style.visibility = "hidden";
-      }
-      // moveProgressIndicator(next);
-    });
-
-    previous.addEventListener("click", (e) => {
-      slider.scrollBy(-(width + gap), 0);
-      if (slider.scrollLeft - width - gap <= 0) {
-        previous.style.visibility = "hidden";
-      }
-      if (
-        childrenContainer.scrollWidth - width - gap <=
-        slider.scrollLeft + width
-      ) {
-        next.style.visibility = "visible";
-      }
-      // moveProgressIndicator(previous);
-    });
-
-    window.addEventListener("resize", (e) => (width = container.offsetWidth));
-  };
-
   const calculateProgressBar = (progressBar: Element) => {
     progressBar.innerHTML = "";
     const slider: HTMLElement = progressBar
@@ -138,14 +96,50 @@ const ItemSlider = ({
     }
   };
 
-  useEffect(() => {
-    const progressContainers: NodeListOf<HTMLElement> =
-      document.querySelectorAll(".slider-container");
-    progressContainers.forEach(onButtonPress);
+  const onButtonPress = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+    const container = sliderContainerRef.current!;
+    const slider = sliderRef.current!;
+    const childrenContainer = childrenContainerRef.current!;
+    const previous = previousButtonRef.current!;
+    const next = nextButtonRef.current!;
 
-    // const progressBar = document.querySelectorAll(".progress-bar")!;
-    // progressBar.forEach(calculateProgressBar);
-  }, []);
+    const gap = parseInt(
+      getComputedStyle(childrenContainer).getPropertyValue("gap"),
+    );
+    let width = container.offsetWidth;
+
+    const targetButton = (e.target as HTMLElement).closest('button')!;
+
+    if (targetButton.getAttribute("data-button") === "next") {
+      slider.scrollBy(width + gap, 0);
+      if (slider.scrollWidth !== 0) {
+        previous.style.visibility = "visible";
+      }
+      if (
+        childrenContainer.scrollWidth - width - gap <=
+        slider.scrollLeft + width
+      ) {
+        next.style.visibility = "hidden";
+      }
+      // moveProgressIndicator(next);
+    }
+
+    if(targetButton.getAttribute('data-button') === 'previous') {
+      slider.scrollBy(-(width + gap), 0);
+      if (slider.scrollLeft - width - gap <= 0) {
+        previous.style.visibility = "hidden";
+      }
+      if (
+        childrenContainer.scrollWidth - width - gap <=
+        slider.scrollLeft + width
+      ) {
+        next.style.visibility = "visible";
+      }
+      // moveProgressIndicator(previous);
+    }
+
+    window.addEventListener("resize", (e) => (width = container.offsetWidth));
+  };
 
   return (
     <section className="row flex flex-col w-3/4 border border-red-500 items-center p-4">
@@ -153,32 +147,38 @@ const ItemSlider = ({
         <h3 className="m-0 text-xl">{title}</h3>
         <div className="progress-bar flex gap-2"></div>
       </div>
-      <div
+      <nav
+        ref={sliderContainerRef}
         className={`slider-container flex w-full items-center overflow-hidden`}
       >
         <button
           data-button={"previous"}
+          ref={previousButtonRef}
+          onClick={e => onButtonPress(e)}
           aria-label={"button for showing the previous items"}
           className="button invisible rounded-l -translate-x-12 bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#cccccf] z-10 h-fit m-0 cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-6xl items-center justify-center transition-all active:bg-[#cccccf]"
         >
           <span>&#8249;</span>
         </button>
-        <nav
+        <div
           data-title={title}
+          ref={sliderRef}
           className={`slider scroll-smooth w-full overflow-auto`}
         >
-          <div className={"children-container flex gap-4 m-0 w-full"}>
+          <div ref={childrenContainerRef} className={"children-container flex gap-4 m-0 w-full"}>
             {children}
           </div>
-        </nav>
+        </div>
         <button
           aria-label={"button for showing the next items"}
           data-button={"next"}
+          onClick={e => onButtonPress(e)}
+          ref={nextButtonRef}
           className="button rounded-r translate-x-12 bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#cccccf] m-0 h-fit cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-6xl flex items-center justify-center transition-all active:bg-[#cccccf]"
         >
           <span>&#8250;</span>
         </button>
-      </div>
+      </nav>
     </section>
   );
 };
