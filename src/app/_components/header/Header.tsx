@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode,  useRef } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 
 const Header = ({ children }: { children: ReactNode }) => {
 
@@ -20,7 +20,12 @@ const Header = ({ children }: { children: ReactNode }) => {
     }
   }
 
-  window.addEventListener("scroll", () => changeHeader());
+  useEffect(() => {
+
+    window.addEventListener("scroll", () => changeHeader());
+
+    return () => window.removeEventListener('scroll', changeHeader)
+  }, []);
 
   return (
     <header
