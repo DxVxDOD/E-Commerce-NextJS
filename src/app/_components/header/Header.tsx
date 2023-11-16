@@ -5,11 +5,10 @@ import { ReactNode,  useRef } from "react";
 const Header = ({ children }: { children: ReactNode }) => {
 
   const headerRef = useRef<HTMLElement>(null)
-  
-  window.addEventListener("scroll", () => {
-    
+
+  const changeHeader = () => {
     const header = headerRef.current!
-    
+
     if (window.scrollY > 50) {
       header.style.height = "6rem";
       header.style.backdropFilter = "blur(2.5rem)";
@@ -19,7 +18,9 @@ const Header = ({ children }: { children: ReactNode }) => {
       header.style.backdropFilter = "blur(0)";
       header.style.borderBottom = "none";
     }
-  });
+  }
+
+  window.addEventListener("scroll", () => changeHeader());
 
   return (
     <header
