@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { MouseEvent, useEffect, useRef } from "react";
 
 const AdSlider = () => {
+  const carouselListRef = useRef<HTMLUListElement>(null);
+
   let intervalId: string | number | NodeJS.Timeout;
 
   const findPosition = (
@@ -10,6 +12,11 @@ const AdSlider = () => {
     position: number,
   ): HTMLElement =>
     elements.find((element) => element.dataset.pos! === `${position}`)!;
+
+  const getPosition = (current: number, active: number): string => {
+    if (Math.abs(current - active) > 2) return `${-current}`;
+    return `${current - active}`;
+  };
 
   const update = (newActive: HTMLElement, elements: HTMLElement[]) => {
     const newActivePosition = newActive.dataset.pos!;
@@ -30,21 +37,16 @@ const AdSlider = () => {
     );
   };
 
-  const getPosition = (current: number, active: number): string => {
-    if (Math.abs(current - active) > 2) return `${-current}`;
-    return `${current - active}`;
-  };
-
-  const resetInterval = (elements: HTMLElement[]) => {
-    clearInterval(intervalId);
-    intervalId = setInterval(() => autoChangeSlide(elements), 10000);
-  };
-
   const autoChangeSlide = (elements: HTMLElement[]) => {
     const current = findPosition(elements, 0);
     const next = findPosition(elements, 1);
 
     next ? update(next, elements) : update(current, elements);
+  };
+
+  const resetInterval = (elements: HTMLElement[]) => {
+    clearInterval(intervalId);
+    intervalId = setInterval(() => autoChangeSlide(elements), 10000);
   };
 
   const handleKeyPress = (e: KeyboardEvent, elements: HTMLElement[]) => {
@@ -60,23 +62,27 @@ const AdSlider = () => {
     }
   };
 
-  useEffect(() => {
-    const carouselList = document.getElementById("carousel-list")!;
-    const carouselItems: NodeListOf<HTMLElement> =
-      document.querySelectorAll(".carousel__item");
-    const elements = Array.from(carouselItems);
+  const handleSliding = (e: MouseEvent<HTMLUListElement, globalThis.MouseEvent>) => {
+    const carouselListChildren = carouselListRef.current!.children;
+    const children = Array.from(carouselListChildren) as HTMLElement[];
+    const newActive = e.target! as HTMLElement;
+    const isItem = newActive.closest(".carousel__item")!;
+    if (!isItem || newActive.classList.contains("carousel__item_active"))
+      return;
+    update(newActive, children);
+    resetInterval(children);
+  };
 
-    carouselList.addEventListener("click", (e) => {
-      const newActive = e.target! as HTMLElement;
-      const isItem = newActive.closest(".carousel__item")!;
-      if (!isItem || newActive.classList.contains("carousel__item_active"))
-        return;
-      update(newActive, elements);
-      resetInterval(elements);
-    });
-    document.addEventListener("keydown", (e) => handleKeyPress(e, elements));
-    resetInterval(elements);
-  }, []);
+  document.addEventListener("keydown", (e) => {
+
+    const carouselListChildren = carouselListRef.current!.children;
+    const children = Array.from(carouselListChildren) as HTMLElement[];
+
+    handleKeyPress(e, children)
+    resetInterval(children);
+
+  });
+
 
   return (
     <section
@@ -84,9 +90,11 @@ const AdSlider = () => {
       className={"border border-red-500 p-4 w-[99%] min-h-[65vh]"}
     >
       <ul
+        onClick={(e) => handleSliding(e)}
         className={
           "flex list-none relative justify-center items-center h-full w-full"
         }
+        ref={carouselListRef}
         id={"carousel-list"}
         data-aos="fade-up"
         data-aos-duration="1000"

@@ -9,54 +9,6 @@ const ItemSlider = ({
   children: ReactNode;
   title: string;
 }) => {
-  const onButtonPressOld = (button: HTMLElement) => {
-    const progressBar: HTMLElement = button
-      .closest(".row")!
-      .querySelector(".progress-bar")!;
-    const slider: HTMLElement = button
-      .closest(`.progress-container`)!
-      .querySelector(`.slider`)!;
-    const closestTitle: HTMLElement = button
-      .closest(".row")!
-      .querySelector(".slider")!;
-
-    const sliderIndex = parseInt(
-      getComputedStyle(slider).getPropertyValue("--slider-index"),
-    );
-    const progressBarItemCount = progressBar.children.length;
-
-    if (
-      button.dataset.button === "next" &&
-      title === closestTitle.dataset.title
-    ) {
-      if (sliderIndex - 1 < 0) {
-        slider.style.setProperty(
-          "--slider-index",
-          `${progressBarItemCount - 1}`,
-        );
-        progressBar.children[sliderIndex].classList.remove("active");
-        progressBar.children[progressBarItemCount - 1].classList.add("active");
-      } else {
-        slider.style.setProperty("--slider-index", `${sliderIndex - 1}`);
-        progressBar.children[sliderIndex].classList.remove("active");
-        progressBar.children[sliderIndex - 1].classList.add("active");
-      }
-    }
-    if (
-      button.dataset.button === "previous" &&
-      title === closestTitle.dataset.title
-    ) {
-      if (sliderIndex + 1 >= progressBarItemCount) {
-        slider.style.setProperty("--slider-index", `${0}`);
-        progressBar.children[sliderIndex].classList.remove("active");
-        progressBar.children[0].classList.add("active");
-      } else {
-        slider.style.setProperty("--slider-index", `${sliderIndex + 1}`);
-        progressBar.children[sliderIndex].classList.remove("active");
-        progressBar.children[sliderIndex + 1].classList.add("active");
-      }
-    }
-  };
 
   // needs work, progress indicator doesn't move correctly
   const moveProgressIndicator = (button: HTMLButtonElement) => {
@@ -157,17 +109,6 @@ const ItemSlider = ({
     window.addEventListener("resize", (e) => (width = container.offsetWidth));
   };
 
-  const throttle = (callBackFunc: () => void, delay = 1000) => {
-    const timeoutFunction = () => {
-      callBackFunc();
-      setTimeout(timeoutFunction, delay);
-    };
-    return () => {
-      callBackFunc();
-      setTimeout(timeoutFunction, delay);
-    };
-  };
-
   const calculateProgressBar = (progressBar: Element) => {
     progressBar.innerHTML = "";
     const slider: HTMLElement = progressBar
@@ -201,14 +142,6 @@ const ItemSlider = ({
     const progressContainers: NodeListOf<HTMLElement> =
       document.querySelectorAll(".slider-container");
     progressContainers.forEach(onButtonPress);
-
-    // window.addEventListener(
-    //   "resize",
-    //   throttle(() => {
-    //     const progressBar = document.querySelectorAll(".progress-bar")!;
-    //     progressBar.forEach(calculateProgressBar);
-    //   }, 250),
-    // );
 
     // const progressBar = document.querySelectorAll(".progress-bar")!;
     // progressBar.forEach(calculateProgressBar);
