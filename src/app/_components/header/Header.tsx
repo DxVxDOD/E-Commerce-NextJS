@@ -24,7 +24,9 @@ const Header = ({ children }: { children: ReactNode }) => {
 
     window.addEventListener("scroll", () => changeHeader());
 
-    return () => window.removeEventListener('scroll', changeHeader)
+    return () => {
+      window.removeEventListener('scroll', changeHeader)
+    }
   }, []);
 
   return (

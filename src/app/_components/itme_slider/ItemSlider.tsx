@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useRef, MouseEvent } from "react";
+import { ReactNode, useRef, MouseEvent, useEffect } from "react";
 
 const ItemSlider = ({
   children,
@@ -138,8 +138,19 @@ const ItemSlider = ({
       // moveProgressIndicator(previous);
     }
 
-    window.addEventListener("resize", (e) => (width = container.offsetWidth));
   };
+
+  useEffect(() => {
+
+    let width = sliderContainerRef.current!.offsetWidth;
+
+    window.addEventListener("resize", (e) => (width = sliderContainerRef.current!.offsetWidth));
+
+    return () => {
+      window.removeEventListener('resize', () => (width = sliderContainerRef.current!.offsetWidth))
+    }
+
+  }, [sliderContainerRef]);
 
   return (
     <section className="row flex flex-col w-3/4 border border-red-500 items-center p-4">

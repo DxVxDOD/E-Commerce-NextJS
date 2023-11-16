@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEvent, useRef } from "react";
+import { MouseEvent, useEffect, useRef } from "react";
 
 const AdSlider = () => {
   const carouselListRef = useRef<HTMLUListElement>(null);
@@ -72,16 +72,21 @@ const AdSlider = () => {
     update(newActive, children);
     resetInterval(children);
   };
-
-  document.addEventListener("keydown", (e) => {
-
+  
+  const handleArrowKeys = (e: KeyboardEvent) => {
     const carouselListChildren = carouselListRef.current!.children;
     const children = Array.from(carouselListChildren) as HTMLElement[];
 
-    handleKeyPress(e, children)
+    handleKeyPress(e, children);
     resetInterval(children);
+  };
 
-  });
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => handleArrowKeys(e))
+    return () => {
+      document.removeEventListener('keydown', e => handleArrowKeys(e))
+    }
+  }, []);
 
 
   return (
