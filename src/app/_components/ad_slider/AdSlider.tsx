@@ -62,7 +62,9 @@ const AdSlider = () => {
     }
   };
 
-  const handleSliding = (e: MouseEvent<HTMLUListElement, globalThis.MouseEvent>) => {
+  const handleSliding = (
+    e: MouseEvent<HTMLUListElement, globalThis.MouseEvent>,
+  ) => {
     const carouselListChildren = carouselListRef.current!.children;
     const children = Array.from(carouselListChildren) as HTMLElement[];
     const newActive = e.target! as HTMLElement;
@@ -72,7 +74,7 @@ const AdSlider = () => {
     update(newActive, children);
     resetInterval(children);
   };
-  
+
   const handleArrowKeys = (e: KeyboardEvent) => {
     const carouselListChildren = carouselListRef.current!.children;
     const children = Array.from(carouselListChildren) as HTMLElement[];
@@ -82,12 +84,11 @@ const AdSlider = () => {
   };
 
   useEffect(() => {
-    document.addEventListener("keydown", (e) => handleArrowKeys(e))
+    document.addEventListener("keydown", (e) => handleArrowKeys(e));
     return () => {
-      document.removeEventListener('keydown', e => handleArrowKeys(e))
-    }
+      document.removeEventListener("keydown", (e) => handleArrowKeys(e));
+    };
   }, []);
-
 
   return (
     <section
