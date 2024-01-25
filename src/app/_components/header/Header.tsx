@@ -3,19 +3,21 @@
 import { ReactNode, useEffect, useRef } from "react";
 
 const Header = ({ children }: { children: ReactNode }) => {
-  const headerRef = useRef<HTMLElement>(null);
+  const headerRefSpan = useRef<HTMLElement>(null);
 
   const changeHeader = () => {
-    const header = headerRef.current!;
+    const headerSpan = headerRefSpan.current!;
 
     if (window.scrollY > 50) {
-      header.style.height = "6rem";
-      header.style.backdropFilter = "blur(2.5rem)";
-      header.style.borderBottom = "solid rgba(123,123,131, 0.5) 0.5px";
+      headerSpan.style.height = "6rem";
+      headerSpan.style.backdropFilter = "blur(2.5rem)";
+      headerSpan.style.zIndex = "10";
+      headerSpan.style.borderBottom = "solid rgba(123,123,131, 0.5) 0.5px";
     } else {
-      header.style.height = "9rem";
-      header.style.backdropFilter = "blur(0)";
-      header.style.borderBottom = "none";
+      headerSpan.style.height = "9rem";
+      headerSpan.style.backdropFilter = "blur(0)";
+      headerSpan.style.borderBottom = "none";
+      headerSpan.style.zIndex = "-10";
     }
   };
 
@@ -28,13 +30,16 @@ const Header = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <header
-      id={"header"}
-      ref={headerRef}
-      className={`header h-[8rem] fixed z-10 w-full p-4 grid grid-cols-[1fr_3fr_1fr] gap-10`}
-    >
-      {children}
-    </header>
+    <>
+      <header className=" fixed w-full p-4 h-fit grid z-20 grid-cols-[1fr_3fr_1fr] gap-10">
+        {children}
+      </header>
+      <span
+        id={"header"}
+        ref={headerRefSpan}
+        className={`header -z-10 h-[8rem] transition-all fixed w-full`}
+      ></span>
+    </>
   );
 };
 

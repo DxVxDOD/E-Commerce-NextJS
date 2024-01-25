@@ -9,7 +9,6 @@ const ItemSlider = ({
   children: ReactNode;
   title: string;
 }) => {
-
   const sliderContainerRef = useRef<HTMLElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   const childrenContainerRef = useRef<HTMLDivElement>(null);
@@ -31,8 +30,6 @@ const ItemSlider = ({
     const closestTitle: HTMLElement = button
       .closest(".row")!
       .querySelector(".slider")!;
-
-    console.log(sliderIndex);
 
     if (
       button.dataset.button === "next" &&
@@ -96,7 +93,9 @@ const ItemSlider = ({
     }
   };
 
-  const onButtonPress = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+  const onButtonPress = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+  ) => {
     const container = sliderContainerRef.current!;
     const slider = sliderRef.current!;
     const childrenContainer = childrenContainerRef.current!;
@@ -108,7 +107,7 @@ const ItemSlider = ({
     );
     let width = container.offsetWidth;
 
-    const targetButton = (e.target as HTMLElement).closest('button')!;
+    const targetButton = (e.target as HTMLElement).closest("button")!;
 
     if (targetButton.getAttribute("data-button") === "next") {
       slider.scrollBy(width + gap, 0);
@@ -121,10 +120,9 @@ const ItemSlider = ({
       ) {
         next.style.visibility = "hidden";
       }
-      // moveProgressIndicator(next);
     }
 
-    if(targetButton.getAttribute('data-button') === 'previous') {
+    if (targetButton.getAttribute("data-button") === "previous") {
       slider.scrollBy(-(width + gap), 0);
       if (slider.scrollLeft - width - gap <= 0) {
         previous.style.visibility = "hidden";
@@ -135,21 +133,23 @@ const ItemSlider = ({
       ) {
         next.style.visibility = "visible";
       }
-      // moveProgressIndicator(previous);
     }
-
   };
 
   useEffect(() => {
-
     let width = sliderContainerRef.current!.offsetWidth;
 
-    window.addEventListener("resize", (e) => (width = sliderContainerRef.current!.offsetWidth));
+    window.addEventListener(
+      "resize",
+      (e) => (width = sliderContainerRef.current!.offsetWidth),
+    );
 
     return () => {
-      window.removeEventListener('resize', () => (width = sliderContainerRef.current!.offsetWidth))
-    }
-
+      window.removeEventListener(
+        "resize",
+        () => (width = sliderContainerRef.current!.offsetWidth),
+      );
+    };
   }, [sliderContainerRef]);
 
   return (
@@ -165,7 +165,7 @@ const ItemSlider = ({
         <button
           data-button={"previous"}
           ref={previousButtonRef}
-          onClick={e => onButtonPress(e)}
+          onClick={(e) => onButtonPress(e)}
           aria-label={"button for showing the previous items"}
           className="button invisible rounded-l -translate-x-12 bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#cccccf] z-10 h-fit m-0 cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-6xl items-center justify-center transition-all active:bg-[#cccccf]"
         >
@@ -176,14 +176,17 @@ const ItemSlider = ({
           ref={sliderRef}
           className={`slider scroll-smooth w-full overflow-auto`}
         >
-          <div ref={childrenContainerRef} className={"children-container flex gap-4 m-0 w-full"}>
+          <div
+            ref={childrenContainerRef}
+            className={"children-container flex gap-4 m-0 w-full"}
+          >
             {children}
           </div>
         </div>
         <button
           aria-label={"button for showing the next items"}
           data-button={"next"}
-          onClick={e => onButtonPress(e)}
+          onClick={(e) => onButtonPress(e)}
           ref={nextButtonRef}
           className="button rounded-r translate-x-12 bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#cccccf] m-0 h-fit cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-6xl flex items-center justify-center transition-all active:bg-[#cccccf]"
         >

@@ -1,5 +1,5 @@
 import AdSlider from "@/app/_components/ad_slider/AdSlider";
-import ItemSlider from "@/app/_components/itme_slider/ItemSlider";
+import ItemSlider from "@/app/_components/item_slider/ItemSlider";
 import computer_accessories from "@/public/computer-accessories.svg";
 import computer_components from "@/public/computer_components.svg";
 import computers from "@/public/computers.svg";
