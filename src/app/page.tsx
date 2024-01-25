@@ -24,18 +24,18 @@ export default function Home() {
     <main className=" flex flex-col items-center gap-4 w-full h-full">
       <AdSlider />
       <ItemSlider title={"Test"}>
-        <img alt={''} src="https://via.placeholder.com/210/00FF00?text=1" />
-        <img alt={''} src="https://via.placeholder.com/220/00FF00?text=2" />
-        <img alt={''} src="https://via.placeholder.com/230/00FF00?text=3" />
-        <img alt={''} src="https://via.placeholder.com/240/00FF00?text=4" />
-        <img alt={''} src="https://via.placeholder.com/250/00FF00?text=5" />
-        <img alt={''} src="https://via.placeholder.com/260/00FF00?text=6" />
-        <img alt={''} src="https://via.placeholder.com/280/00FF00?text=8" />
-        <img alt={''} src="https://via.placeholder.com/270/00FF00?text=7" />
-        <img alt={''} src="https://via.placeholder.com/250/00FF00?text=9" />
-        <img alt={''} src="https://via.placeholder.com/260/00FF00?text=10" />
-        <img alt={''} src="https://via.placeholder.com/270/00FF00?text=11" />
-        <img alt={''} src="https://via.placeholder.com/280/00FF00?text=12" />
+        <img alt={""} src="https://via.placeholder.com/210/00FF00?text=1" />
+        <img alt={""} src="https://via.placeholder.com/220/00FF00?text=2" />
+        <img alt={""} src="https://via.placeholder.com/230/00FF00?text=3" />
+        <img alt={""} src="https://via.placeholder.com/240/00FF00?text=4" />
+        <img alt={""} src="https://via.placeholder.com/250/00FF00?text=5" />
+        <img alt={""} src="https://via.placeholder.com/260/00FF00?text=6" />
+        <img alt={""} src="https://via.placeholder.com/280/00FF00?text=8" />
+        <img alt={""} src="https://via.placeholder.com/270/00FF00?text=7" />
+        <img alt={""} src="https://via.placeholder.com/250/00FF00?text=9" />
+        <img alt={""} src="https://via.placeholder.com/260/00FF00?text=10" />
+        <img alt={""} src="https://via.placeholder.com/270/00FF00?text=11" />
+        <img alt={""} src="https://via.placeholder.com/280/00FF00?text=12" />
       </ItemSlider>
       <ItemSlider title={"Categories"}>
         <Card categories={true} link={""}>

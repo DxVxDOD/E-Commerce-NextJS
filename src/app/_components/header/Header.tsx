@@ -3,11 +3,10 @@
 import { ReactNode, useEffect, useRef } from "react";
 
 const Header = ({ children }: { children: ReactNode }) => {
-
-  const headerRef = useRef<HTMLElement>(null)
+  const headerRef = useRef<HTMLElement>(null);
 
   const changeHeader = () => {
-    const header = headerRef.current!
+    const header = headerRef.current!;
 
     if (window.scrollY > 50) {
       header.style.height = "6rem";
@@ -18,15 +17,14 @@ const Header = ({ children }: { children: ReactNode }) => {
       header.style.backdropFilter = "blur(0)";
       header.style.borderBottom = "none";
     }
-  }
+  };
 
   useEffect(() => {
-
     window.addEventListener("scroll", () => changeHeader());
 
     return () => {
-      window.removeEventListener('scroll', changeHeader)
-    }
+      window.removeEventListener("scroll", changeHeader);
+    };
   }, []);
 
   return (

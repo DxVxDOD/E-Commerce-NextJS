@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import themeSlice from "./slices/themeSlice";
+import logger from "redux-logger";
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {},
+    reducer: { themeSlice },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
   });
 };
 

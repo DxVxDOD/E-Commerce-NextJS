@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type TInitialState = {
-  value: string | null;
+  value: "dark" | "light" | null;
 };
 
 export const themeSlice = createSlice({
@@ -10,13 +10,21 @@ export const themeSlice = createSlice({
     value: null,
   } as TInitialState,
   reducers: {
-    set: (state, action) => {
+    setTheme: (state, action: PayloadAction<"dark" | "light">) => {
+      console.log("action payload", action.payload);
       state.value = action.payload;
       return state;
+    },
+    toggleTheme: (state) => {
+      if (state.value === "dark") {
+        state.value = "light";
+      } else {
+        state.value = "dark";
+      }
     },
   },
 });
 
-export const { set } = themeSlice.actions;
+export const { setTheme, toggleTheme } = themeSlice.actions;
 
 export default themeSlice.reducer;

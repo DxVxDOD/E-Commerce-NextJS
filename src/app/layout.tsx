@@ -3,15 +3,16 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/app/_components/header/Header";
 import MainNavbar from "@/app/_components/navbar/MainNavbar";
-import Logo from "@/app/_components/header/Logo";
-import SearchBar from "@/app/_components/header/SearchBar";
-import PersonBusinessSwitch from "@/app/_components/header/PersonBusinessSwitch";
-import ShoppingCart from "@/app/_components/header/ShoppingCart";
+import Logo from "@/app/_components/header/logo/Logo";
+import SearchBar from "@/app/_components/header/search_bar/SearchBar";
+import PersonBusinessSwitch from "./_components/header/person_business/PersonBusinessSwitch";
+import ShoppingCart from "@/app/_components/header/cart/ShoppingCart";
 import Link from "next/link";
 import Image from "next/image";
 import signIn from "@/public/sign-in-svgrepo-com.svg";
-import ThemeSwitch from "@/app/_components/header/ThemeSwitch";
+import ThemeSwitch from "@/app/_components/header/theme_switch/ThemeSwitch";
 import StoreProvider from "./StoreProvider";
+import SignOut from "./_components/header/sign_in_out/SignOut";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,9 +40,7 @@ export default function RootLayout({
             <div className={"flex gap-4 justify-end h-fit pt-3"}>
               <PersonBusinessSwitch />
               <ShoppingCart />
-              <Link href={""}>
-                <Image src={signIn} alt={"Sign In"} />
-              </Link>
+              <SignOut />
               <ThemeSwitch />
             </div>
           </Header>
