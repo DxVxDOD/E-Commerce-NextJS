@@ -30,9 +30,9 @@ body::-webkit-scrollbar-thumb:hover {
   background: #6f0000;
 }
 
-.header {
+/* .header {
   transition: all 0.4s ease-out;
-}
+} */
 .carousel__item {
   transition: all 0.25s ease-in-out;
   box-shadow: 0 0 20px 0 hsla(0deg 0% 0% / 0.4);
@@ -44,27 +44,27 @@ body::-webkit-scrollbar-thumb:hover {
   transition: all 0.25s ease-in-out;
 }
 .carousel__item:nth-child(1) {
-  background-image: url(https://images.pexels.com/photos/5400806/pexels-photo-5400806.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-image: url(https://placehold.co/600x400?text=Main\nAd1);
   background-position: center;
   background-size: cover;
 }
 .carousel__item:nth-child(2) {
-  background-image: url(https://images.pexels.com/photos/1302325/pexels-photo-1302325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-image: url(https://placehold.co/600x400?text=Main\nAd2);
   background-position: center;
   background-size: cover;
 }
 .carousel__item:nth-child(3) {
-  background-image: url(https://images.pexels.com/photos/1038935/pexels-photo-1038935.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-image: url(https://placehold.co/600x400?text=Main\nAd3);
   background-position: center;
   background-size: cover;
 }
 .carousel__item:nth-child(4) {
-  background-image: url(https://images.pexels.com/photos/3043424/pexels-photo-3043424.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-image: url(https://placehold.co/600x400?text=Main\nAd4);
   background-position: center;
   background-size: cover;
 }
 .carousel__item:nth-child(5) {
-  background-image: url(https://images.pexels.com/photos/125509/pexels-photo-125509.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-image: url(https://placehold.co/600x400?text=Main\nAd5);
   background-position: center;
   background-size: cover;
 }
