@@ -2,7 +2,7 @@
 
 import React from "react";
 import ItemSlider from "../ItemSlider";
-import Card from "../Card";
+import Card from "./CategoriesCard";
 import Image from "next/image";
 import { useAppSelector } from "@/redux/hooks";
 import computer_accessories from "./svg/computer-accessories.svg";
@@ -11,72 +11,247 @@ import computers from "./svg/computers.svg";
 import computers_dark from "./svg/computers_dark.svg";
 import computer_components from "./svg/computer_components.svg";
 import computer_components_dark from "./svg/computer_components_dark.svg";
+import screens from "./svg/screens.svg";
+import screens_dark from "./svg/screens_dark.svg";
+import smart_home from "./svg/smart_home.svg";
+import smart_home_dark from "./svg/smart_home_dark.svg";
+import game_console_vr from "./svg/game_console_vr.svg";
+import game_console_vr_dark from "./svg/game_console_vr_dark.svg";
+import external_storage from "./svg/external_storage.svg";
+import external_storage_dark from "./svg/external_storage_dark.svg";
+import home_leisure_health from "./svg/home_leisure_health.svg";
+import home_leisure_health_dark from "./svg/home_leisure_health_dark.svg";
+import cable_adapters from "./svg/cable_adapters.svg";
+import cable_adapters_dark from "./svg/cable_adapters_dark.svg";
+import sound_image from "./svg/sound_image.svg";
+import sound_image_dark from "./svg/sound_image_dark.svg";
+import mobile_phones from "./svg/mobile_phone.svg";
+import mobile_phones_dark from "./svg/mobile_phone_dark.svg";
+import network from "./svg/network.svg";
+import network_dark from "./svg/network_dark.svg";
+import gift_cards from "./svg/gift_cards.svg";
+import gift_cards_dark from "./svg/gift_cards_dark.svg";
+import software from "./svg/software.svg";
+import software_dark from "./svg/software_dark.svg";
+import printer_scanner from "./svg/printer_scanner.svg";
+import printer_scanner_dark from "./svg/printer_scanner_dark.svg";
+import tablet from "./svg/tablet.svg";
+import tablet_dark from "./svg/tablet_dark.svg";
 
 export default function Categories() {
   const theme = useAppSelector((state) => state.themeSlice.value);
 
   return (
-    <ItemSlider title={"Categories"}>
-      <Card categories={true} link={""}>
-        {theme === "dark" ? (
-          <Image src={computers_dark} alt={"Computers"} />
-        ) : (
-          <Image src={computers} alt={"Computers"} />
-        )}
-      </Card>
-      <Card categories={true} link={""}>
-        {theme === "dark" ? (
-          <Image src={computer_components_dark} alt={"Computer Components"} />
-        ) : (
-          <Image src={computer_components} alt={"Computer Components"} />
-        )}
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={screens} alt={"Screens"} />
-      </Card>
-      <Card categories={true} link={""}>
-        {theme === "dark" ? (
-          <Image src={computer_accessories_dark} alt={"Computer Accessories"} />
-        ) : (
-          <Image src={computer_accessories} alt={"Computer Accessories"} />
-        )}
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={smart_home} alt={"Smart Home"} />
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={game_console_vr} alt={"Game | Console | VR"} />
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={external_storage} alt={"External Storage"} />
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={home_leisure_health} alt={"Home | Leisure | Health"} />
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={cable_adapters} alt={"Cable | Adapters"} />
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={sound_image} alt={"Sound | Image"} />
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={mobile_phones} alt={"Mobile Phones"} />
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={network} alt={"Network"} />
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={gift_cards} alt={"Gift Cards"} />
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={software} alt={"Software"} />
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={printer_scanner} alt={"Printer | Scanner"} />
-      </Card>
-      <Card categories={true} link={""}>
-        <Image src={tablet} alt={"Tablets"} />
-      </Card>
+    <ItemSlider categories={true} title={"Categories"}>
+      {theme === "dark" ? (
+        <>
+          <Card link={""}>
+            <Image src={computers_dark} alt={"Computers"} />
+            {/* <span>Computers</span> */}
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={computer_components_dark}
+              alt={"Computer Components"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image height={36} width={36} src={screens_dark} alt={"Screens"} />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={computer_accessories_dark}
+              alt={"Computer Accessories"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={smart_home_dark}
+              alt={"Smart Home"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={game_console_vr_dark}
+              alt={"Game | Console | VR"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={external_storage_dark}
+              alt={"External Storage"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={home_leisure_health_dark}
+              alt={"Home | Leisure | Health"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={cable_adapters_dark}
+              alt={"Cable | Adapters"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={sound_image_dark}
+              alt={"Sound | Image"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={mobile_phones_dark}
+              alt={"Mobile Phones"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image height={36} width={36} src={network_dark} alt={"Network"} />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={gift_cards_dark}
+              alt={"Gift Cards"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={software_dark}
+              alt={"Software"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={printer_scanner_dark}
+              alt={"Printer | Scanner"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image height={36} width={36} src={tablet_dark} alt={"Tablets"} />
+          </Card>
+        </>
+      ) : (
+        <>
+          <Card link={""}>
+            <Image height={36} width={36} src={computers} alt={"Computers"} />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={computer_components}
+              alt={"Computer Components"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image height={36} width={36} src={screens} alt={"Screens"} />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={computer_accessories}
+              alt={"Computer Accessories"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image height={36} width={36} src={smart_home} alt={"Smart Home"} />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={game_console_vr}
+              alt={"Game | Console | VR"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={external_storage}
+              alt={"External Storage"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={home_leisure_health}
+              alt={"Home | Leisure | Health"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={cable_adapters}
+              alt={"Cable | Adapters"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={sound_image}
+              alt={"Sound | Image"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={mobile_phones}
+              alt={"Mobile Phones"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image height={36} width={36} src={network} alt={"Network"} />
+          </Card>
+          <Card link={""}>
+            <Image height={36} width={36} src={gift_cards} alt={"Gift Cards"} />
+          </Card>
+          <Card link={""}>
+            <Image height={36} width={36} src={software} alt={"Software"} />
+          </Card>
+          <Card link={""}>
+            <Image
+              height={36}
+              width={36}
+              src={printer_scanner}
+              alt={"Printer | Scanner"}
+            />
+          </Card>
+          <Card link={""}>
+            <Image height={36} width={36} src={tablet} alt={"Tablets"} />
+          </Card>
+        </>
+      )}
     </ItemSlider>
   );
 }

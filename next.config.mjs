@@ -4,7 +4,7 @@ import withPlaiceholder from "@plaiceholder/next";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["via.assets.so"],
+    domains: ["via.assets.so", "via.placeholder.com"],
   },
 };
 

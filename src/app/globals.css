@@ -114,6 +114,11 @@ body::-webkit-scrollbar-thumb:hover {
   border-radius: 0.5rem;
 }
 
+#categories {
+  aspect-ratio: none;
+  width: 30rem;
+}
+
 .button {
   width: var(--button-width);
 }
@@ -126,20 +131,20 @@ body::-webkit-scrollbar-thumb:hover {
   height: 0;
 }
 
-.slider-container:hover > [data-button='next'],
-.slider-container:hover > [data-button='previous'] {
+.slider-container:hover > [data-button="next"],
+.slider-container:hover > [data-button="previous"] {
   transform: translateX(0%);
 }
 
-.slider-container:hover > [data-button='previous']:hover {
+.slider-container:hover > [data-button="previous"]:hover {
   transform: translateX(calc(var(--button-width) * 0.075)) scale(1.15);
 }
 
-.slider-container:hover > [data-button='next']:hover {
+.slider-container:hover > [data-button="next"]:hover {
   transform: translateX(calc(var(--button-width) * -0.075)) scale(1.15);
 }
 
-.progress-item {
+/* .progress-item {
   min-width: 1rem;
   height: 0.5rem;
   border-radius: 25%;
@@ -153,5 +158,4 @@ body::-webkit-scrollbar-thumb:hover {
 .progress-bar-inner {
   width: 0;
   position: absolute;
-}
-
+} */

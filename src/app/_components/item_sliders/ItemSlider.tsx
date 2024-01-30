@@ -5,15 +5,18 @@ import { ReactNode, useRef, MouseEvent, useEffect } from "react";
 const ItemSlider = ({
   children,
   title,
+  categories,
 }: {
   children: ReactNode;
   title: string;
+  categories: boolean;
 }) => {
   const sliderContainerRef = useRef<HTMLElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   const childrenContainerRef = useRef<HTMLDivElement>(null);
   const nextButtonRef = useRef<HTMLButtonElement>(null);
   const previousButtonRef = useRef<HTMLButtonElement>(null);
+  const categoriesAspect = categories ? "categories" : "";
 
   // needs work, progress indicator doesn't move correctly
   const moveProgressIndicator = (button: HTMLButtonElement) => {
@@ -139,24 +142,22 @@ const ItemSlider = ({
   useEffect(() => {
     let width = sliderContainerRef.current!.offsetWidth;
 
-    window.addEventListener(
-      "resize",
-      (e) => (width = sliderContainerRef.current!.offsetWidth),
-    );
+    window.addEventListener("resize", (e) => {
+      width = sliderContainerRef.current!.offsetWidth;
+    });
 
     return () => {
-      window.removeEventListener(
-        "resize",
-        () => (width = sliderContainerRef.current!.offsetWidth),
-      );
+      window.removeEventListener("resize", () => {
+        width = sliderContainerRef.current!.offsetWidth;
+      });
     };
   }, [sliderContainerRef]);
 
   return (
     <section className="row flex flex-col w-3/4 border border-red-500 items-center p-4">
       <div className="flex justify-between w-full items-center p-2">
-        <h3 className="m-0 text-xl">{title}</h3>
-        <div className="progress-bar flex gap-2"></div>
+        <h3 className="m-0 text-lg">{title}</h3>
+        {/* <div className="progress-bar flex gap-2"></div> */}
       </div>
       <nav
         ref={sliderContainerRef}
@@ -177,6 +178,7 @@ const ItemSlider = ({
           className={`slider scroll-smooth w-full overflow-auto`}
         >
           <div
+            id={categoriesAspect}
             ref={childrenContainerRef}
             className={"children-container flex gap-4 m-0 w-full"}
           >
