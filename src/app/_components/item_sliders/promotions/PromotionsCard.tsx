@@ -11,7 +11,7 @@ const PromotionsCard = ({
   return (
     <Link
       href={`${link}`}
-      className={"border border-red-500 flex justify-center"}
+      className={" border border-[#38383c] bg-[#252528] flex justify-center"}
     >
       {children}
     </Link>

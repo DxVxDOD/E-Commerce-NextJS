@@ -154,9 +154,10 @@ const ItemSlider = ({
   }, [sliderContainerRef]);
 
   return (
-    <section className="row flex flex-col w-3/4 border border-red-500 items-center p-4">
-      <div className="flex justify-between w-full items-center p-2">
-        <h3 className="m-0 text-lg">{title}</h3>
+    <section className="row flex flex-col w-3/4 items-center p-4">
+      <div className="flex justify-between gap-1 w-full items-center p-2">
+        <h3 className="m-0 whitespace-nowrap text-lg">{title}</h3>
+        <span className="w-full h-[0.05rem] bg-[#7b7b83]"></span>
         {/* <div className="progress-bar flex gap-2"></div> */}
       </div>
       <nav
@@ -168,7 +169,7 @@ const ItemSlider = ({
           ref={previousButtonRef}
           onClick={(e) => onButtonPress(e)}
           aria-label={"button for showing the previous items"}
-          className="button invisible rounded-l -translate-x-12 bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#cccccf] z-10 h-fit m-0 cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-6xl items-center justify-center transition-all active:bg-[#cccccf]"
+          className="button invisible rounded-l -translate-x-12 bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#9999a0] z-10  m-0 cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-5xl h-fit items-center justify-center transition-all active:bg-[#cccccf]"
         >
           <span>&#8249;</span>
         </button>
@@ -190,7 +191,7 @@ const ItemSlider = ({
           data-button={"next"}
           onClick={(e) => onButtonPress(e)}
           ref={nextButtonRef}
-          className="button rounded-r translate-x-12 bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#cccccf] m-0 h-fit cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-6xl flex items-center justify-center transition-all active:bg-[#cccccf]"
+          className="button rounded-r translate-x-12 bg-opacity-20 bg-black text-[#f4f4f5] border border-[#f4f4f5] border-opacity-60 hover:bg-opacity-80 hover:bg-[#9999a0] m-0 h-fit cursor-pointer hover:text-[#09090a] active:text-[#cccccf] text-5xl flex items-center justify-center transition-all active:bg-[#cccccf]"
         >
           <span>&#8250;</span>
         </button>

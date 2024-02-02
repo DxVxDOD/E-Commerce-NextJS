@@ -47,7 +47,9 @@ export default function Categories() {
         <>
           <Card link={""}>
             <Image src={computers_dark} alt={"Computers"} />
-            {/* <span>Computers</span> */}
+            <span className=" text-sm whitespace-nowrap text-center">
+              Computers
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -56,9 +58,15 @@ export default function Categories() {
               src={computer_components_dark}
               alt={"Computer Components"}
             />
+            <span className=" text-sm whitespace-nowrap text-center ">
+              Computer Components
+            </span>
           </Card>
           <Card link={""}>
             <Image height={36} width={36} src={screens_dark} alt={"Screens"} />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Screens
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -67,6 +75,9 @@ export default function Categories() {
               src={computer_accessories_dark}
               alt={"Computer Accessories"}
             />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Computer Accessories
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -75,6 +86,9 @@ export default function Categories() {
               src={smart_home_dark}
               alt={"Smart Home"}
             />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Smart Home
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -83,6 +97,9 @@ export default function Categories() {
               src={game_console_vr_dark}
               alt={"Game | Console | VR"}
             />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Games | Console | VR
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -91,6 +108,9 @@ export default function Categories() {
               src={external_storage_dark}
               alt={"External Storage"}
             />
+            <span className=" text-sm whitespace-nowrap text-center">
+              External Storage
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -99,6 +119,9 @@ export default function Categories() {
               src={home_leisure_health_dark}
               alt={"Home | Leisure | Health"}
             />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Home | Leisure
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -107,6 +130,9 @@ export default function Categories() {
               src={cable_adapters_dark}
               alt={"Cable | Adapters"}
             />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Cables | Adapters
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -115,6 +141,9 @@ export default function Categories() {
               src={sound_image_dark}
               alt={"Sound | Image"}
             />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Sound | Image
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -123,9 +152,15 @@ export default function Categories() {
               src={mobile_phones_dark}
               alt={"Mobile Phones"}
             />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Mobile Phones
+            </span>
           </Card>
           <Card link={""}>
             <Image height={36} width={36} src={network_dark} alt={"Network"} />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Network
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -134,6 +169,9 @@ export default function Categories() {
               src={gift_cards_dark}
               alt={"Gift Cards"}
             />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Gift Cards
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -142,6 +180,9 @@ export default function Categories() {
               src={software_dark}
               alt={"Software"}
             />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Software
+            </span>
           </Card>
           <Card link={""}>
             <Image
@@ -150,9 +191,15 @@ export default function Categories() {
               src={printer_scanner_dark}
               alt={"Printer | Scanner"}
             />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Printer | Scanner
+            </span>
           </Card>
           <Card link={""}>
             <Image height={36} width={36} src={tablet_dark} alt={"Tablets"} />
+            <span className=" text-sm whitespace-nowrap text-center">
+              Tablets
+            </span>
           </Card>
         </>
       ) : (

@@ -1,5 +1,6 @@
 "use client";
 
+import "./ad_slider.css";
 import { MouseEvent, useEffect, useRef } from "react";
 
 const AdSlider = () => {
@@ -93,7 +94,7 @@ const AdSlider = () => {
   return (
     <section
       aria-label={"latest news"}
-      className={"border border-red-500 p-4 w-[99%] min-h-[65vh]"}
+      className={" p-4 w-[99%] mr-[0.5rem] min-h-[65vh]"}
     >
       <ul
         onClick={(e) => handleSliding(e)}

@@ -6,7 +6,7 @@ const Card = ({ children, link }: { children: ReactNode; link: string }) => {
     <Link
       href={`${link}`}
       className={
-        "border border-[#38383c] bg-[#252528] flex justify-center h-20"
+        "border border-[#38383c] bg-[#252528] flex flex-col items-center gap-2 justify-center h-20"
       }
     >
       {children}

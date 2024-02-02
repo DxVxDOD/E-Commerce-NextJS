@@ -1,20 +1,17 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { VT323 } from "next/font/google";
 import Header from "@/app/_components/header/Header";
 import MainNavbar from "@/app/_components/navbar/MainNavbar";
 import Logo from "@/app/_components/header/logo/Logo";
 import SearchBar from "@/app/_components/header/search_bar/SearchBar";
 import PersonBusinessSwitch from "./_components/header/person_business/PersonBusinessSwitch";
 import ShoppingCart from "@/app/_components/header/cart/ShoppingCart";
-import Link from "next/link";
-import Image from "next/image";
-import signIn from "@/public/sign-in-svgrepo-com.svg";
 import ThemeSwitch from "@/app/_components/header/theme_switch/ThemeSwitch";
 import StoreProvider from "./StoreProvider";
 import SignOut from "./_components/header/sign_in_out/SignOut";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = VT323({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,7 +28,7 @@ export default function RootLayout({
       <StoreProvider>
         <body
           className={
-            "dark:bg-[#1C1C1E] flex flex-col dark:text-[#cccccf] w-screen h-screen box-border m-0 p-0 overflow-x-hidden transition-all gap-4"
+            "dark:bg-[#1C1C1E] flex flex-col dark:text-[#cccccf] text-xl w-screen h-screen box-border m-0 p-0 overflow-x-hidden transition-all gap-4"
           }
         >
           <Header>
